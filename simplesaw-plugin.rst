@@ -28,8 +28,8 @@ Simple Saw Plugin
 5. Add ``WaveTableOsc *osc;`` to the ``private`` Section of the ``PluginSimpleSaw`` class in
    ``plugins/SimpleSaw/PluginSimpleSaw.hpp``.
 
-6. Add ``osc = sawOsc();`` in the constructor method of the ``PluginSimpleSaw`` class *before* the
-   ``loadProgram(0);`` line.
+6. Add ``osc = sawOsc();`` in the constructor method of the ``PluginSimpleSaw`` class in
+   ``plugins/SimpleSaw/PluginSimpleSaw.cpp``*before* the ``loadProgram(0);`` line.
 
 7. Change every occurence of ``paramVolume`` to ``paramFrequency`` in
    ``plugins/SimpleSaw/PluginSimpleSaw.hpp`` and ``plugins/SimpleSaw/PluginSimpleSaw.cpp``.
