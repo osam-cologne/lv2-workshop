@@ -25,7 +25,7 @@ Simple Saw Plugin
 
 4. Add ``#include "WaveUtils.hpp"`` to ``plugins/SimpleSaw/PluginSimpleSaw.hpp``.
 
-5. Add ``WaveTableOsc *osc;``to the ``private`` Section of the ``PluginSimpleSaw`` class in
+5. Add ``WaveTableOsc *osc;`` to the ``private`` Section of the ``PluginSimpleSaw`` class in
    ``plugins/SimpleSaw/PluginSimpleSaw.hpp``.
 
 6. Add ``osc = sawOsc();`` in the constructor method of the ``PluginSimpleSaw`` class *before* the
@@ -35,8 +35,8 @@ Simple Saw Plugin
    ``plugins/SimpleSaw/PluginSimpleSaw.hpp`` and ``plugins/SimpleSaw/PluginSimpleSaw.cpp``.
 
 8. Change the ``initParameter`` method of the ``PluginSimpleSaw`` class to set the name and symbol
-  of the parameter to "Frequency" resp. "frequency" and its min/max/default values to 20.0/10000.0
-  and 440.0;
+   of the parameter to "Frequency" resp. "frequency" and its min/max/default values to 20.0/10000.0
+   and 440.0;
 
 9. Change the for loop in the ``run`` method of the ``PluginSimpleSaw`` class to the following::
 
