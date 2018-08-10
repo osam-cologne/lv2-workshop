@@ -199,7 +199,7 @@ format, e.g. ``simplegain-vst.so``. For the LV2 format a bundle directory will b
 If you get any compiler warnings during the compilation, don't worry, these are probably due to
 some occurences of deprecated C++ syntax in the DPF library sources.
 
-If you get any errors, please double-check that you have all the develpoment tools and libraries
+If you get any errors, please double-check that you have all the development tools and libraries
 installed, are in the correct directory, and that you haven't accidentally entered any weird
 data when creating the project. When trying to compile again, it's best to issue a ``make clean``
 first, to make sure everything is compiled again anew.
@@ -218,23 +218,24 @@ bundle directory with current timestamps::
     -rwxr-xr-x 1 joe users 26960 09.08.2018 18:26 simplegain-ladspa.so*
     -rwxr-xr-x 1 joe users 30904 09.08.2018 18:26 simplegain-vst.so*
 
-To make the LV2 plug-in know to host programs, we need to put it into either ``/usr/lib/lv2`` or
-a ``.lv2`` directory in our home directory. Since we don't want to mess with the system-installed
-files, we will install the bundle into, creating it first, if it doesn't exist yet. Instead of
-simply copying the bundle directory, we will create a symbolic link to it, so when we compile the
-plug-in again, we don't have to copy it again (or scratch our head when the changes we did do
-not seem to take effect)::
+To make the LV2 plug-in known to host programs, we need to put it into either ``/usr/lib/lv2`` or a
+``.lv2`` directory in our home directory. Since we don't want to mess with the system-installed
+files, we will install the bundle into the latter, creating it first, if it doesn't exist yet.
+Instead of simply copying the bundle directory, we will create a symbolic link to it, so when we
+compile the plug-in again, we don't have to copy it again (or scratch our head when the changes we
+did do not seem to take effect)::
 
     $ mkdir -p ~/.lv2   # Notice the leading dot in the directory name!
     $ ln -s "$(pwd)/bin/simplegain.lv2" ~/.lv2
 
-Now we check, whether our plug-in can be found with ``lv2ls``::
+Let's check whether our plug-in can be found with ``lv2ls`` (make sure that the ``LV2_PATH``
+environment variable is unset or includes ``$HOME/.lv2``)::
 
     $ lv2ls | grep simplegain
     http://mydomain.com/plugins/simplegain
 
-This should print out the LV2 URI (i.e. its unique name) of the plug-in. We can get some more
-information about the plug-in with ``lv2info``::
+This should print out the LV2 URI (i.e. its unique name) of the plug-in. With this URI we can get
+some more information about the plug-in with ``lv2info``::
 
     $ lv2info http://example.com/plugins/simplegain
     http://mydomain.com/plugins/simplegain
@@ -292,28 +293,28 @@ information about the plug-in with ``lv2info``::
             Properties:  http://lv2plug.in/ns/ext/port-props#logarithmic
 
 
-Let's try to load the plug-in with the ``jalv`` LV2 host. make sure you have started the JACK
+Let's try to load the plug-in with the ``jalv`` LV2 host. Make sure you have started the JACK
 audio server (e.g. with ``qjackctl``) and run::
 
     $ jalv.gtk http://mydomain.com/plugins/simplegain
 
-This should open a small window with a menu bar and a numeric spind box and a slider for the
-volume control of our plug-in.
+This should open a small window with a menu bar and a numeric spin box and a slider for the volume
+control of our plug-in.
 
 Open a JACK patchbay program (e.g. ``qjackctl``, ``patchage`` or ``Catia``) to see the JACK client
-created by ``jalv`` for the plug-in. It should have two audio inputs and outputs and one event
+for the plug-in created by ``jalv``. It should have two audio inputs and outputs and one event
 (MIDI) input.
 
 Now route some audio into the audio inputs of the plug-in and connect its audio outputs to the
 ``system:playback_1`` and ``system:playback_2`` inputs of your soundcard. Then change the volume
-parameter via the slider. The audio level of the signal shoudl change accordingly.
+parameter via the slider. The audio level of the signal should change accordingly.
 
 
 Conclusion
 ----------
 
 That's all for now. You can test your plugin in different hosts, e.g. Carla or Ardour and try
-automating the volume parameter via POSC, MIDI or a DAW track automation. Then have a look at the
+automating the volume parameter via OSC, MIDI or a DAW track automation. Then have a look at the
 source code of your plug-in in the ``plugins/SimpleGain`` directory. We will discuss the plug-ins
 C++ classes and its various methods next time.
 
