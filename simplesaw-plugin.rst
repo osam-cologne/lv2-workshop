@@ -1,4 +1,4 @@
-LV2 Audio-Plugin Workshop OSCAMC
+LV2 Audio-Plugin Workshop OSAMC
 ################################
 
 :author: Christopher Arndt
