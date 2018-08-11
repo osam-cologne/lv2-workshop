@@ -1,0 +1,6 @@
+[submodule "simplesaw"]
+	path = simplesaw
+	url = https://github.com/osamc-lv2-workshop/simplesaw.git
+[submodule "simplegain"]
+	path = simplegain
+	url = https://github.com/osamc-lv2-workshop/simplegain.git
