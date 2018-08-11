@@ -2,7 +2,19 @@ LV2 Audio-Plugin Workshop OSCAMC
 ################################
 
 :author: Christopher Arndt
-:date: 2018-08-02
+:date: 2018-08-11
+
+
+Let's create a plug-in, which generates some audio output itself. It will output a sawtooth wave,
+whose frequency can be controlled via a plug-in parameter. We'll call the plug-in "SimpleSaw".
+
+We can simply generate the same project as for the `SimpleGain plug-in`_ and then change the
+source code in a few places to make the plug-in do something different. You can see all the changes
+in detail in `this commit`_ in the GitHub repository for the plug-in.
+
+.. _simplegain plug-in: my-first-lv2-plugin.rst
+.. _this commit:
+    https://github.com/osamc-lv2-workshop/simplesaw/commit/b5750ecba67ade452dee86775aafd4228f0f4205
 
 
 Simple Saw Plugin
@@ -31,10 +43,11 @@ Simple Saw Plugin
    ``#include`` that's already in there.
 
 5. Add ``WaveTableOsc *osc;`` to the ``private`` Section of the ``PluginSimpleSaw`` class in
-   ``plugins/SimpleSaw/PluginSimpleSaw.hpp``.
+   ``plugins/SimpleSaw/PluginSimpleSaw.hpp`` and remove the ``double   fSampleRate;`` line there.
 
 6. Add ``osc = sawOsc();`` in the constructor method of the ``PluginSimpleSaw`` class in
-   ``plugins/SimpleSaw/PluginSimpleSaw.cpp`` *before* the ``loadProgram(0);`` line.
+   ``plugins/SimpleSaw/PluginSimpleSaw.cpp`` *before* the ``loadProgram(0);`` line and remove
+   the ``sampleRateChanged(getSampleRate());`` line.
 
 7. Change every occurence of ``paramVolume`` to ``paramFrequency`` in
    ``plugins/SimpleSaw/PluginSimpleSaw.hpp`` and ``plugins/SimpleSaw/PluginSimpleSaw.cpp``.
@@ -54,6 +67,9 @@ Simple Saw Plugin
 
    and remove the lines initializing  the ``inpL``, ``inpR`` and ``vol`` variables.
 
+   Optionally, remove the ``input`` name from the method parameters, since the plug-in doesn't use
+   the audio inputs.
+
 10. Change the body of the ``setParametervalue`` method of the ``PluginSimpleSaw`` class to the
     following::
 
@@ -61,7 +77,7 @@ Simple Saw Plugin
 
         switch (index) {
             case paramFrequency:
-                osc->setFrequency(value / fSampleRate);
+                osc->setFrequency(value / getSampleRate());
                 fParams[paramFrequency] = value;
                 break;
         }
@@ -77,7 +93,15 @@ Simple Saw Plugin
 
     (Only the second parameter in the call to ``setParameterValue`` changes.)
 
-12. Compile the plug-in, copy or symlink the LV2 plug-in to ``~/.lv2`` and test it with ``jalv``
+12. Change the body of the ``sampleRateChanged`` method of the `PluginSimpleSaw`` class to the
+    following single line::
+
+        osc->setFrequency(fParams[paramFrequency] / newSampleRate);
+
+13. Set the value of the ``DISTRHO_PLUGIN_NUM_INPUTS`` pre-processor definition in
+    ``DistrhoPluginInfo.h`` to ``0``.
+
+14. Compile the plug-in, copy or symlink the LV2 plug-in to ``~/.lv2`` and test it with ``jalv``
     or another LV2 host of your liking.
 
 
