@@ -19,8 +19,8 @@ The DISTRHO Plugin Framework (DPF) allows to create plug-ins in different format
 A presentation by DPF's author falkTX:
    https://media.ccc.de/v/minilac16-ltsmakesomeplugins
 
-WDL / IPlug (Oli Larkin Edition), a very framework similar to DPF, but orientated more towards developing for Windows and OS X (i.e. supports AU plug-ins):
+WDL / IPlug (Oli Larkin Edition), a framework very similar to DPF, but orientated more towards developing for Windows and OS X (i.e. supports AU plug-ins):
    https://github.com/olilarkin/wdl-ol
 
-A very good multi-part tutorial on developing with WDL-OL:
+A very good multi-part tutorial on developing plug-ins with WDL-OL:
    http://www.martin-finke.de/blog/tags/making_audio_plugins.html
