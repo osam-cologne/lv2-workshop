@@ -78,7 +78,6 @@ Simple Saw Plugin
         switch (index) {
             case paramFrequency:
                 osc->setFrequency(value / getSampleRate());
-                fParams[paramFrequency] = value;
                 break;
         }
 
