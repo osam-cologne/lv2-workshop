@@ -33,7 +33,7 @@ Simple Saw Plugin
    disply page of each file).
 
 3. Add these objects to the ``OBJ_DSP`` list in the Makefile in ``plugins/SimpleSaw`` *before*
-   ``PluginSimpleSaw.cpp.o`` (don't forget the backslashes to keep the whole assigment on one
+   ``PluginSimpleSaw.cpp.o`` (don't forget the backslashes to keep the whole assignment on one
    logical line)::
 
         WaveTableOsc.cpp.o \
