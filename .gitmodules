@@ -4,3 +4,6 @@
 [submodule "simplegain"]
 	path = simplegain
 	url = https://github.com/osamc-lv2-workshop/simplegain.git
+[submodule "simplesynth"]
+	path = simplesynth
+	url = https://github.com/osamc-lv2-workshop/simplesynth.git
