@@ -7,3 +7,6 @@
 [submodule "simplesynth"]
 	path = simplesynth
 	url = https://github.com/osamc-lv2-workshop/simplesynth.git
+[submodule "simpledelay"]
+	path = simpledelay
+	url = https://github.com/osamc-lv2-workshop/simpledelay.git
