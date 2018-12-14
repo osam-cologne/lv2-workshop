@@ -4,6 +4,20 @@ OSAMC LV2 Plug-in Workshop
 Documentation and code for a workshop on creating LV2 plug-ins by OSAMC
 (https://osamc.de)
 
+Recommended Reading Order
+-------------------------
+
+"My first LV2 plugin": SimpleGain
+   Step by step instructions to create the SimpleGian plugin, based on the DPF framework
+   https://github.com/osamc-lv2-workshop/lv2-workshop/blob/master/my-first-lv2-plugin.rst
+   
+Changing SimpleGain into SimpleSaw
+   https://github.com/osamc-lv2-workshop/lv2-workshop/blob/master/simplesaw-plugin.rst   
+   
+MIDI input for SimpleSaw to create SimpleSynth
+    (Step by step instructions may follow)
+    https://github.com/osamc-lv2-workshop/simplesynth
+
 
 Plug-in Frameworks
 ------------------
